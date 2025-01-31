@@ -11,7 +11,7 @@ def mymuladd(a: Tensor, b: Tensor, c: float) -> Tensor:
 
 def mm_new_8(a: Tensor, b: Tensor) -> Tensor:
     """Performs a * b + c in an efficient fused kernel"""
-    return torch.ops.extension_cpp.mm_new_8.default(a, b)
+    return torch.ops.extension_cpp.mm_new_8(a, b)
 
 # Registers a FakeTensor kernel (aka "meta kernel", "abstract impl")
 # that describes what the properties of the output Tensor are given

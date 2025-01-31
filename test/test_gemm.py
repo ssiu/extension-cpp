@@ -12,7 +12,8 @@ b = torch.randn(1024, 1024, dtype=torch.float32, device=device)
 start_time = time.time()
 
 # Matrix multiplication
-result = extension_cpp.ops.mm_new_8(a, b)
+# result = extension_cpp.ops.mm_new_8(a, b)
+result = extension_cpp.mm_new_8(a, b)
 #result = torch.mm(a, b)  # Or: result = a @ b
 
 # Synchronize if using GPU to measure correct time
