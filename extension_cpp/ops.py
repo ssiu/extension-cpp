@@ -1,13 +1,17 @@
 import torch
 from torch import Tensor
 
-__all__ = ["mymuladd", "myadd_out"]
+__all__ = ["mymuladd", "myadd_out", "mm_new_8"]
 
 
 def mymuladd(a: Tensor, b: Tensor, c: float) -> Tensor:
     """Performs a * b + c in an efficient fused kernel"""
     return torch.ops.extension_cpp.mymuladd.default(a, b, c)
 
+
+def mm_new_8(a: Tensor, b: Tensor) -> Tensor:
+    """Performs a * b + c in an efficient fused kernel"""
+    return torch.ops.extension_cpp.mm_new_8.default(a, b)
 
 # Registers a FakeTensor kernel (aka "meta kernel", "abstract impl")
 # that describes what the properties of the output Tensor are given
