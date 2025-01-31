@@ -214,10 +214,9 @@ at::Tensor mm_new_8(const at::Tensor& a, const at::Tensor& b) {
   at::Tensor a_contig = a.contiguous();
   at::Tensor b_contig = b.contiguous();
   at::Tensor c = torch::empty(a_contig.sizes(), a_contig.options());
-  const float* a_ptr = a_contig.data_ptr<float>();
-  const float* b_ptr = b_contig.data_ptr<float>();
+  float* a_ptr = a_contig.data_ptr<float>();
+  float* b_ptr = b_contig.data_ptr<float>();
   float* c_ptr = c.data_ptr<float>();
-  int TILE_WIDTH = 128;
   int N = a.size(0);
   dim3 gridDim_mm_new_8(N / TILE_WIDTH,N / TILE_WIDTH);
   dim3 blockDim_mm_new_8(256);
