@@ -230,9 +230,9 @@ at::Tensor mm_new_8(const at::Tensor& a, const at::Tensor& b) {
 
 // Registers CUDA implementations for mymuladd, mymul, myadd_out
 TORCH_LIBRARY_IMPL(extension_cpp, CUDA, m) {
-  m.impl("mymuladd", &mymuladd_cuda);
-  m.impl("mymul", &mymul_cuda);
-  m.impl("myadd_out", &myadd_out_cuda);
+//   m.impl("mymuladd", &mymuladd_cuda);
+//   m.impl("mymul", &mymul_cuda);
+//   m.impl("myadd_out", &myadd_out_cuda);
   m.impl("mm_new_8", &mm_new_8);
 }
 
